@@ -1,0 +1,24 @@
+@import url('./reset.less');
+
+html,
+body,
+#__nuxt {
+  width: 100%;
+  height: 100%;
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    --un-bg-opacity: 1;
+    background: rgb(255 255 255 / var(--un-bg-opacity));
+    color: #333;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --un-bg-opacity: 1;
+    background: rgb(0 0 0 / var(--un-bg-opacity));
+    color: #fff;
+  }
+}
