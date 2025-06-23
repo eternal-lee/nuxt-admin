@@ -5,11 +5,14 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "pm2": "pm2 start ecosystem.config.cjs -i 4",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxtjs/seo": "^3.0.3",
+    "@nuxtjs/sitemap": "^7.4.1",
     "nuxt": "^3.17.3",
     "vue": "^3.5.13",
     "vue-router": "^4.5.1"

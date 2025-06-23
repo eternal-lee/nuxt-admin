@@ -40,5 +40,7 @@ export default defineNuxtConfig({
         minPixelValue: 3 // 设置最小的转换数值，如果小于3px的将不被转换
       }
     }
-  }
+  },
+  modules: ['@nuxtjs/sitemap', '@nuxtjs/seo'],
+  sitemap: {}
 })
