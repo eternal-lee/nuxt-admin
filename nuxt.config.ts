@@ -22,7 +22,20 @@ export default defineNuxtConfig({
             'ieternal.top,ieternal,组件库,自定义vue组件,vue,eternal,ieternal自定义vue组件,文本省略,视频封装,vant-cli-app'
         }
       ],
-      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+      script: [
+        {
+          innerHTML: `
+            var _hmt = _hmt || [];
+            (function() {
+              var hm = document.createElement("script");
+              hm.src = "https://hm.baidu.com/hm.js?5f670af4dd60d230a3220aa3322172d3";
+              var s = document.getElementsByTagName("script")[0]; 
+              s.parentNode.insertBefore(hm, s);
+            })();
+          `
+        }
+      ]
     }
   },
   css: ['~/assets/less/index.less'],
@@ -42,5 +55,11 @@ export default defineNuxtConfig({
     }
   },
   modules: ['@nuxtjs/sitemap', '@nuxtjs/seo'],
+  seo: {
+    title: 'ieternal',
+    description: 'ieternal 基于 create-vant-cli-app 封装的通用组件库',
+    keywords:
+      'ieternal.top,ieternal,组件库,自定义vue组件,vue,eternal,ieternal自定义vue组件,文本省略,视频封装,vant-cli-app'
+  },
   sitemap: {}
 })
