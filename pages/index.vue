@@ -1,7 +1,7 @@
 <template>
   <div class="home-page">
     <bgCanvas />
-    <HuaRongdaoIndex />
+    <Login />
     <footer class="footer">
       <img src="~/assets/images/filings.png" class="icon" alt="" />
       ICP备案号：<a href="https://beian.miit.gov.cn" target="_blank">蜀ICP备2024045204号-1</a>
@@ -10,7 +10,8 @@
 </template>
 
 <script setup lang="ts">
-import HuaRongdaoIndex from '~/components/huaRongdao/index.vue'
+// import HuaRongdaoIndex from '~/components/huaRongdao/index.vue'
+import Login from '~/components/login/index.vue'
 import bgCanvas from '~/components/huaRongdao/bgCanvas.vue'
 </script>
 
