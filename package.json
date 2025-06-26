@@ -3,8 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
     "dev": "nuxt dev",
+    "build": "nuxt build",
+    "build:dev": "nuxt build --dotenv .env",
+    "build:test": "nuxt build --dotenv .env.test",
+    "build:prod": "nuxt build --dotenv .env.production",
     "pm2": "pm2 start ecosystem.config.cjs -i 4",
     "generate": "nuxt generate",
     "preview": "nuxt preview",

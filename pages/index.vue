@@ -13,6 +13,9 @@
 // import HuaRongdaoIndex from '~/components/huaRongdao/index.vue'
 import Login from '~/components/login/index.vue'
 import bgCanvas from '~/components/huaRongdao/bgCanvas.vue'
+
+const config = useRuntimeConfig()
+console.log(config.public)
 </script>
 
 <style lang="less" scoped>

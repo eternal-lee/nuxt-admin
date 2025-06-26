@@ -12,8 +12,8 @@ export default defineConfig([
       'no-unused-vars': 'warn',
       'no-undef': 'warn',
       'vue/multi-word-component-names': 'off',
-      'no-console': import.meta.env.NODE_ENV === 'production' ? 'warn' : 'off',
-      'no-debugger': import.meta.env.NODE_ENV === 'production' ? 'warn' : 'off'
+      'no-console': 'off',
+      'no-debugger': 'off'
     }
   }
 ])

@@ -67,11 +67,12 @@ function visitorIn() {
 }
 
 function authHandle(name: string) {
+  const config = useRuntimeConfig()
   if (name == 'github') {
     // 直接调接口去实现...
     const authorizeUrl = 'https://github.com/login/oauth/authorize'
-    const clientID = 'Ov23litVRiuaZ2d2rBO0'
-    const redirectUrl = 'http://localhost:3000'
+    const clientID = config.public.clientId
+    const redirectUrl = config.public.redirectUrl
     location.href = `${authorizeUrl}?client_id=${clientID}&redirect_uri=${redirectUrl}`
   }
 }

@@ -54,6 +54,14 @@ export default defineNuxtConfig({
       }
     }
   },
+  runtimeConfig: {
+    // 公共变量，前后端都可用
+    public: {
+      apiBase: process.env.NUXT_PUBLIC_API_BASE || '',
+      clientId: process.env.NUXT_PUBLIC_CLIENT_ID,
+      redirectUrl: process.env.NUXT_PUBLIC_REDIRECT_URL
+    }
+  },
   modules: ['@nuxtjs/sitemap', '@nuxtjs/seo'],
   seo: {
     title: 'ieternal',
