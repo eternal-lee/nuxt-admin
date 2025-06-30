@@ -1,4 +1,7 @@
-User-Agent: *
-Disallow:
+# START nuxt-robots (indexable)
+User-agent: *
+Disallow: 
 
 Sitemap: https://www.ieternal.top/sitemap.xml
+Sitemap: http://www.ieternal.top/sitemap.xml
+# END nuxt-robots
