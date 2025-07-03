@@ -10,7 +10,7 @@ export default defineNuxtConfig({
       meta: [
         {
           name: 'description',
-          content: 'ieternal 基于 create-vant-cli-app 封装的通用组件库'
+          content: 'ieternal | nuxt3-admin 后台管理系统模板'
         },
         {
           name: 'viewport',
@@ -18,8 +18,7 @@ export default defineNuxtConfig({
         },
         {
           name: 'keywords',
-          content:
-            'ieternal.top,ieternal,组件库,自定义vue组件,vue,eternal,ieternal自定义vue组件,文本省略,视频封装,vant-cli-app'
+          content: 'ieternal,nuxt,nuxt3,nuxt-admin,nuxt3-admin,后台管理系统.'
         }
       ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
@@ -40,6 +39,9 @@ export default defineNuxtConfig({
   },
   css: ['~/assets/less/index.less'],
   devtools: { enabled: false },
+  devServer: {
+    port: 3000
+  },
   postcss: {
     plugins: {
       'postcss-nested': {},
@@ -62,10 +64,9 @@ export default defineNuxtConfig({
   },
   modules: ['@nuxtjs/sitemap', '@nuxtjs/seo'],
   seo: {
-    title: 'ieternal',
-    description: 'ieternal 基于 create-vant-cli-app 封装的通用组件库',
-    keywords:
-      'ieternal.top,ieternal,组件库,自定义vue组件,vue,eternal,ieternal自定义vue组件,文本省略,视频封装,vant-cli-app'
+    title: 'ieternal | nuxt-admin',
+    description: 'ieternal | nuxt3-admin 后台管理系统模板',
+    keywords: 'ieternal,nuxt,nuxt3,nuxt-admin,nuxt3-admin,后台管理系统.'
   },
   sitemap: {}
 })

@@ -4,6 +4,11 @@
 
 <script setup lang="ts">
 const route = useRoute()
+const router = useRouter()
+
+definePageMeta({
+  layout: 'full'
+})
 
 onMounted(() => {
   const code = route.query.code
@@ -15,5 +20,7 @@ onMounted(() => {
   } else if (state == 'github_auth') {
     console.log('Github 授权 code:', code)
   }
+
+  router.replace('/')
 })
 </script>

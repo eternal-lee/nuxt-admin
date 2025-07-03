@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { NuxtError } from '#app'
 
-const props = defineProps({
+defineProps({
   error: Object as () => NuxtError
 })
 </script>
@@ -15,7 +15,7 @@ const props = defineProps({
       <div class="newtons-cradle__dot"></div>
     </div>
     <h1>NOT FOUND</h1>
-    <h1>{{ error.statusCode }}</h1>
+    <h1>{{ error?.statusCode }}</h1>
     <NuxtLink to="/">
       <button class="btn">
         <span class="txt"> Back home </span>

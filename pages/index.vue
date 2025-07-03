@@ -1,47 +1,27 @@
 <template>
-  <div class="home-page">
-    <bgCanvas />
-    <Login />
-    <footer class="footer">
-      <img src="~/assets/images/filings.png" class="icon" alt="" />
-      ICP备案号：<a href="https://beian.miit.gov.cn" target="_blank">蜀ICP备2024045204号-1</a>
-    </footer>
+  <div class="home">
+    <img src="~/assets/images/welcome.png" class="welcome" alt="welcome" />
   </div>
 </template>
 
 <script setup lang="ts">
-// import HuaRongdaoIndex from '~/components/huaRongdao/index.vue'
-import Login from '~/components/login/index.vue'
-import bgCanvas from '~/components/huaRongdao/bgCanvas.vue'
+definePageMeta({
+  middleware: 'auth'
+})
 </script>
 
 <style lang="less" scoped>
-.home-page {
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
-}
 
-.footer {
-  position: absolute;
-  left: 0%;
-  bottom: 0%;
-  width: 100%;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-  color: #fff;
-  font-size: 13px;
-}
-.footer .icon {
-  width: 20px;
-  vertical-align: middle;
-}
-
-a {
-  color: #999;
-  text-decoration: none;
-}
-a:hover {
-  color: rgb(44 126 248);
+  .welcome {
+    width: 70%;
+    max-width: 1200px;
+    margin-bottom: 20px;
+  }
 }
 </style>

@@ -4,11 +4,17 @@
     <div class="form">
       <div class="input-group">
         <label for="username">Username</label>
-        <input type="text" name="username" id="username" placeholder="admin" />
+        <input type="text" v-model="userName" name="username" id="username" placeholder="admin" />
       </div>
       <div class="input-group">
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" placeholder="123456" />
+        <input
+          type="password"
+          v-model="userPwd"
+          name="password"
+          id="password"
+          placeholder="123456"
+        />
         <div class="forgot">
           <!-- <a rel="noopener noreferrer" href="#">Forgot Password ?</a> -->
         </div>
@@ -66,13 +72,16 @@
 </template>
 
 <script lang="ts" setup>
+const userName = ref('')
+const userPwd = ref('')
 const router = useRouter()
 
-onMounted(() => {
-  console.warn(router.currentRoute.value.query)
-})
 function signIn() {
+  const _isBol = userName.value == 'admin' && userPwd.value == '123456'
+  if (!_isBol) return console.log('用户名或密码不正确')
   console.log('登录成功')
+  localStorage.setItem('token', '11999')
+  router.replace({ path: '/' })
 }
 function visitorIn() {
   router.replace({

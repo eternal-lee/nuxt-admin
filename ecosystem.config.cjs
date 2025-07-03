@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'NuxtAppName',
+      name: 'nuxt-admin',
       port: '3002',
       exec_mode: 'cluster',
       // instances: '3',
