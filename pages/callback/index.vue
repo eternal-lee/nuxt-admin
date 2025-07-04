@@ -20,7 +20,7 @@ onMounted(() => {
   } else if (state == 'github_auth') {
     console.log('Github 授权 code:', code)
   }
-
+  localStorage.setItem('token', '11999')
   router.replace('/')
 })
 </script>
