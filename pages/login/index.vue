@@ -14,8 +14,7 @@ import Login from '~/components/login/index.vue'
 import bgCanvas from '~/components/huaRongdao/bgCanvas.vue'
 
 definePageMeta({
-  layout: 'full',
-  middleware: 'auth'
+  layout: 'full'
 })
 </script>
 

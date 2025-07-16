@@ -12,9 +12,7 @@ import { randomFloor } from '~/assets/js/tool'
 defineOptions({
   name: 'Propaganda'
 })
-definePageMeta({
-  middleware: 'auth'
-})
+
 const canvasCtx = ref<CanvasRenderingContext2D | null>(null)
 const ballImg = ref<HTMLImageElement | null>(null)
 const balls = ref<BallClass[]>([])
