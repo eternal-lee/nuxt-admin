@@ -37,7 +37,7 @@ export default defineNuxtConfig({
       ]
     }
   },
-  css: ['~/assets/less/index.less'],
+  css: ['~/assets/less/index.less', 'element-plus/dist/index.css'],
   devtools: { enabled: false },
   devServer: {
     port: 3000
@@ -62,7 +62,7 @@ export default defineNuxtConfig({
       apiBase: process.env.NUXT_PUBLIC_API_BASE || ''
     }
   },
-  modules: ['@nuxtjs/sitemap', '@nuxtjs/seo'],
+  modules: ['@nuxtjs/sitemap', '@nuxtjs/seo', '@element-plus/nuxt'],
   seo: {
     title: 'ieternal | nuxt-admin',
     description: 'ieternal | nuxt3-admin 后台管理系统模板',

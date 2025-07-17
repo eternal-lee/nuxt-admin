@@ -14,8 +14,10 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@element-plus/nuxt": "^1.1.4",
     "@nuxtjs/seo": "^3.0.3",
     "@nuxtjs/sitemap": "^7.4.1",
+    "element-plus": "^2.10.4",
     "nuxt": "^3.17.3",
     "vue": "^3.5.13",
     "vue-router": "^4.5.1"
