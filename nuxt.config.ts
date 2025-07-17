@@ -37,7 +37,7 @@ export default defineNuxtConfig({
       ]
     }
   },
-  css: ['~/assets/less/index.less', 'element-plus/dist/index.css'],
+  css: ['~/assets/less/index.less'],
   devtools: { enabled: false },
   devServer: {
     port: 3000
@@ -62,7 +62,22 @@ export default defineNuxtConfig({
       apiBase: process.env.NUXT_PUBLIC_API_BASE || ''
     }
   },
-  modules: ['@nuxtjs/sitemap', '@nuxtjs/seo', '@element-plus/nuxt'],
+  modules: [
+    '@nuxtjs/sitemap',
+    '@nuxtjs/seo',
+    '@element-plus/nuxt',
+    [
+      '@pinia/nuxt',
+      {
+        autoImports: [
+          // 自动引入 `defineStore(), storeToRefs()`
+          'defineStore',
+          'storeToRefs'
+        ]
+      }
+    ],
+    'pinia-plugin-persistedstate/nuxt'
+  ],
   seo: {
     title: 'ieternal | nuxt-admin',
     description: 'ieternal | nuxt3-admin 后台管理系统模板',

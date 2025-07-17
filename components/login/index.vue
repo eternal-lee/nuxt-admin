@@ -72,8 +72,8 @@
 </template>
 
 <script lang="ts" setup>
-const userName = ref('')
-const userPwd = ref('')
+const userName = ref('admin')
+const userPwd = ref('123456')
 const router = useRouter()
 
 function signIn() {

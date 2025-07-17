@@ -116,5 +116,6 @@ function createBall(): Record<string, any> {
 .propaganda {
   display: inline-block;
   border: 1px dashed #5757c6;
+  background: #5757c6;
 }
 </style>
