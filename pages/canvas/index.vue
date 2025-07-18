@@ -1,6 +1,8 @@
 <template>
-  <div class="propaganda">
-    <canvas class="keyPop" :width="WIDTH" :height="HEIGHT"></canvas>
+  <div class="propaganda card">
+    <div class="canvasBox">
+      <canvas class="keyPop" :width="WIDTH" :height="HEIGHT"></canvas>
+    </div>
   </div>
 </template>
 
@@ -114,8 +116,16 @@ function createBall(): Record<string, any> {
 
 <style lang="less" scoped>
 .propaganda {
-  display: inline-block;
-  border: 1px dashed #5757c6;
-  background: #5757c6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  .canvasBox {
+    display: inline-block;
+    border: 1px dashed #5757c6;
+    background: rgba(87, 87, 198, 50%);
+  }
 }
 </style>

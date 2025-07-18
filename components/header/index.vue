@@ -1,18 +1,37 @@
 <template>
   <header class="header">
-    <div class="left flexCenter" @click.stop="handleToggle">
-      <el-icon size="24">
+    <div class="left flexCenter">
+      <el-icon class="collapse-icon" size="24" @click.stop="handleToggle">
         <Fold v-if="!isCollapse" />
         <Expand v-else />
       </el-icon>
+      <div class="brendCrumb">
+        <el-icon>
+          <HomeFilled />
+        </el-icon>
+        首页
+      </div>
     </div>
-    <div class="center flexCenter">ieternal | nuxt-admin</div>
+    <div class="center flexCenter">nuxt-admin</div>
     <div class="right">
-      <div class="name">admin</div>
-      <div class="portrait"></div>
-
-      <div class="menuBox">
-        <div class="menuIItem" @click.stop="loginOut">退出</div>
+      <div class="header-icon">
+        <div class="theme" @click="switchHandle">
+          <el-icon v-if="themeConfig.isDark"><Moon /></el-icon>
+          <el-icon v-if="!themeConfig.isDark"><Sunny /></el-icon>
+        </div>
+      </div>
+      <div class="userInfo">
+        <div class="username">admin</div>
+        <el-dropdown class="flexCenter" :hide-on-click="false">
+          <div class="portrait"></div>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item class="menuIItem" @click.stop="loginOut">退出</el-dropdown-item>
+              <el-dropdown-item divided>Action 5</el-dropdown-item>
+              <el-dropdown-item>Action 6</el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
       </div>
     </div>
   </header>
@@ -20,14 +39,23 @@
 
 <script setup lang="ts">
 import { useMenuStore } from '~/store/menu'
+import { useGlobalStore } from '~/store/index'
+import { useThemeHook } from '~/composables/useTheme'
 
 const useMenu = useMenuStore()
 const { isCollapse } = storeToRefs(useMenu)
+const { themeConfig } = storeToRefs(useGlobalStore())
+const useTheme = useThemeHook()
 
 const router = useRouter()
 
 function handleToggle() {
   useMenu.handleToggle()
+}
+
+function switchHandle() {
+  themeConfig.value.isDark = !themeConfig.value.isDark
+  useTheme.switchDark()
 }
 
 function loginOut() {
@@ -42,15 +70,22 @@ function loginOut() {
   display: flex;
   justify-content: space-between;
   height: 100%;
-  background: #fff;
-  color: #333;
+  color: var(--el-menu-text-color);
   user-select: none;
 
   .left {
     position: relative;
     z-index: 1;
     padding: 0 20px;
-    cursor: pointer;
+
+    .collapse-icon {
+      cursor: pointer;
+    }
+
+    .brendCrumb {
+      margin-left: 20px;
+      font-size: 14px;
+    }
   }
 
   .center {
@@ -67,54 +102,42 @@ function loginOut() {
     z-index: 1;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
     box-sizing: border-box;
     padding-right: 20px;
-    min-width: 150px;
+    min-width: 100px;
     max-width: 180px;
     margin-left: auto;
 
-    .portrait {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #dedede;
-      margin-left: 4px;
-      /* 可选：防止收缩 */
-      flex-shrink: 0;
-    }
-
-    .menuBox {
-      display: none;
-      box-sizing: border-box;
-      position: absolute;
-      z-index: 9;
-      top: 100%; // 让菜单内容向下延申
-      right: 0;
-      padding: 5px;
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      background: #fff;
-      color: #333;
-      cursor: default;
-
-      .menuIItem {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 40px;
+    .header-icon {
+      .theme {
         cursor: pointer;
-
-        & + .menuIItem {
-          border-top: 1px solid #dedede;
-        }
       }
     }
 
-    &:hover .menuBox {
-      display: block;
+    .userInfo {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-left: 20px;
+      height: 100%;
+
+      .username {
+        margin: 0 20px;
+      }
+
+      .portrait {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #dedede;
+        /* 可选：防止收缩 */
+        flex-shrink: 0;
+        cursor: pointer;
+      }
+
+      :deep(.el-dropdown) {
+        height: 100%;
+      }
     }
   }
 }

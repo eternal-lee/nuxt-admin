@@ -1,5 +1,5 @@
 <template>
-  <div class="menus">
+  <div class="aside-box">
     <div class="logo">
       <img src="~/assets/images/logo.png" class="icon" alt="" />
       <div class="desc" :class="{ w: isCollapse }">工作台</div>
@@ -53,10 +53,7 @@ function setMenuFunc(key: string) {
 </script>
 
 <style lang="less" scoped>
-.menus {
-  height: 100%;
-  background: #fff;
-
+.aside-box {
   .logo {
     box-sizing: border-box;
     position: relative;
@@ -86,11 +83,15 @@ function setMenuFunc(key: string) {
       }
     }
   }
-}
 
-.el-menu-vertical-demo {
-  &:not(.el-menu--collapse) {
-    width: 200px;
+  .el-menu {
+    border-right: none;
+  }
+
+  .el-menu-vertical-demo {
+    &:not(.el-menu--collapse) {
+      width: 210px;
+    }
   }
 }
 </style>

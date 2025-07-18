@@ -8,10 +8,10 @@
 <style lang="less" scoped>
 .footer {
   width: 100%;
-  height: 50px;
+  height: 100%;
   line-height: 50px;
   text-align: center;
-  color: #333;
+  color: var(--el-menu-text-color);
   font-size: 13px;
 
   .icon {
@@ -26,10 +26,6 @@
   }
   a:hover {
     color: rgb(44 126 248);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    color: #fff;
   }
 }
 </style>

@@ -37,15 +37,13 @@ export default defineNuxtConfig({
       ]
     }
   },
-  css: ['~/assets/less/index.less'],
+  css: ['~/assets/less/index.less', 'element-plus/theme-chalk/dark/css-vars.css'],
   devtools: { enabled: false },
   devServer: {
     port: 3000
   },
   postcss: {
     plugins: {
-      'postcss-nested': {},
-      'postcss-custom-media': {},
       'postcss-pxtorem': {
         rootValue: 16, // 基础字体大小，通常设置为16px
         propList: ['*'], // 可以针对所有属性进行转换，也可以指定如['font', 'font-size', 'width', 'height']等
