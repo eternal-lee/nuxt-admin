@@ -1,5 +1,17 @@
 <template>
-  <div class="common-layout">
+  <div class="common-layout layoutLoading" v-if="layoutLoading">
+    <NuxtPage>
+      <div class="loader">
+        <span><span></span><span></span><span></span><span></span></span>
+        <div class="base">
+          <span></span>
+          <div class="face"></div>
+        </div>
+      </div>
+      <div class="longfazers"><span></span><span></span><span></span><span></span></div>
+    </NuxtPage>
+  </div>
+  <div class="common-layout" v-if="!layoutLoading">
     <el-container>
       <el-aside>
         <cusMenu />
@@ -25,10 +37,23 @@ import pageHeader from '~/components/header/index.vue'
 import pageFooter from '~/components/footer/index.vue'
 import cusMenu from '~/components/cusMenu/index.vue'
 import tabsBox from '~/components/tabsBox/index.vue'
+
+const layoutLoading = ref(true)
+
+onBeforeMount(() => {
+  layoutLoading.value = true
+})
+
+onMounted(() => {
+  layoutLoading.value = false
+})
 </script>
 
 <style lang="less" scoped>
+@import url('~/assets/less/layoutLoading.less');
+
 .common-layout {
+  position: relative;
   height: 100%;
   overflow: hidden;
 

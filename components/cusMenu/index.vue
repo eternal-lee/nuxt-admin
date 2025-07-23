@@ -26,15 +26,18 @@
 
 <script lang="ts" setup>
 import { routes } from '~/router/index'
-import { useMenuStore } from '~/store/menu'
+import { useTabsStore } from '~/store/modules/tabs'
+import { useGlobalStore } from '~/store'
 
-const useMenu = useMenuStore()
-const { isCollapse } = storeToRefs(useMenu)
+const useTabs = useTabsStore()
+const globalStore = useGlobalStore()
+const { themeConfig } = storeToRefs(globalStore)
 // const isCollapse = ref(false) // 展开的
 
 const active = ref('')
 
 const router = useRouter()
+const isCollapse = computed(() => themeConfig.value.isCollapse)
 
 onMounted(() => {
   active.value = router.currentRoute.value.path || '/'
@@ -48,7 +51,7 @@ const handleSelect = (key: string) => {
 
 function setMenuFunc(key: string) {
   const item = routes.find((item) => item.path === key) as Record<string, unknown>
-  useMenu.setMenuList(item)
+  useTabs.setMenuList(item)
 }
 </script>
 

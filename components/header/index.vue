@@ -38,19 +38,18 @@
 </template>
 
 <script setup lang="ts">
-import { useMenuStore } from '~/store/menu'
 import { useGlobalStore } from '~/store/index'
 import { useThemeHook } from '~/composables/useTheme'
 
-const useMenu = useMenuStore()
-const { isCollapse } = storeToRefs(useMenu)
-const { themeConfig } = storeToRefs(useGlobalStore())
+const useGlobal = useGlobalStore()
+const { themeConfig } = storeToRefs(useGlobal)
 const useTheme = useThemeHook()
 
 const router = useRouter()
+const isCollapse = computed(() => themeConfig.value.isCollapse)
 
 function handleToggle() {
-  useMenu.handleToggle()
+  useGlobal.handleToggle({ isCollapse: !isCollapse.value })
 }
 
 function switchHandle() {

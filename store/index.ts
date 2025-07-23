@@ -2,10 +2,6 @@
 export const useGlobalStore = defineStore(
   'GlobalState',
   () => {
-    // token
-    const token = ref('')
-    // userInfo
-    const userInfo = ref('')
     // language
     const language = ref('')
     // themeConfig
@@ -16,16 +12,28 @@ export const useGlobalStore = defineStore(
       isCollapse: false
     })
 
+    /**
+     * 主题配置
+     * @param config 单个配置属性
+     */
+    function handleToggle(config: Record<string, any>) {
+      themeConfig.value = {
+        ...themeConfig.value,
+        ...config
+      }
+    }
+
     return {
-      token,
-      userInfo,
       language,
-      themeConfig
+      themeConfig,
+
+      handleToggle
     }
   },
   {
     persist: process.client && {
-      storage: sessionStorage
+      storage: sessionStorage,
+      pick: ['themeConfig', 'isCollapse']
     }
   }
 )
