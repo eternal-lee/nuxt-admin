@@ -73,3 +73,7 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+## 示例
+
+[nuxt3+pinia+vueuse+i18n+animate.css+element Plus 从零开始搭建](https://juejin.cn/post/7446390745144541194)
