@@ -5,11 +5,17 @@
         <Fold v-if="!isCollapse" />
         <Expand v-else />
       </el-icon>
-      <div class="brendCrumb">
-        <el-icon>
-          <HomeFilled />
-        </el-icon>
-        首页
+      <div class="brendCrumb" v-if="!!breadcrumbList.length">
+        <el-breadcrumb :separator-icon="ArrowRight">
+          <el-breadcrumb-item
+            v-for="item in breadcrumbList"
+            :key="item.path"
+            :to="{ path: item.path }"
+          >
+            <el-icon class="bread_icon"> <component :is="item.icon"></component> </el-icon
+            >{{ item.name }}
+          </el-breadcrumb-item>
+        </el-breadcrumb>
       </div>
     </div>
     <div class="center flexCenter">nuxt-admin</div>
@@ -39,14 +45,25 @@
 
 <script setup lang="ts">
 import { useGlobalStore } from '~/store/index'
+import { useTabsStore } from '~/store/modules/tabs'
 import { useThemeHook } from '~/composables/useTheme'
+import { ArrowRight } from '@element-plus/icons-vue'
+import { routes } from '~/router/index'
 
 const useGlobal = useGlobalStore()
+const useTabs = useTabsStore()
 const { themeConfig } = storeToRefs(useGlobal)
 const useTheme = useThemeHook()
 
 const router = useRouter()
 const isCollapse = computed(() => themeConfig.value.isCollapse)
+const breadcrumbList = computed(() => {
+  const _fullpath = router.currentRoute.value.fullPath
+  const _item = routes.filter((item) => item.path == '/')
+  if (_fullpath == '/') return _item
+  const _curTab = useTabs.tabsMenuList.filter((item) => item.path == _fullpath)
+  return [..._item, ..._curTab]
+})
 
 function handleToggle() {
   useGlobal.handleToggle({ isCollapse: !isCollapse.value })
@@ -84,6 +101,10 @@ function loginOut() {
     .brendCrumb {
       margin-left: 20px;
       font-size: 14px;
+
+      :deep(.el-icon.bread_icon) {
+        margin-right: 2px;
+      }
     }
   }
 

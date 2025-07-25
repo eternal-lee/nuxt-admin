@@ -4,7 +4,7 @@ export default defineNuxtConfig({
     head: {
       title: 'ieternal', // default fallback title
       htmlAttrs: {
-        lang: 'en'
+        lang: 'zh'
       },
       viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
       meta: [

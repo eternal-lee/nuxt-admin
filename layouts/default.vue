@@ -67,6 +67,7 @@ onMounted(() => {
 
     &.is-vertical {
       flex-direction: column;
+      min-width: 800px;
     }
   }
 

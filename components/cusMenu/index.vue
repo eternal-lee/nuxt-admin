@@ -35,13 +35,29 @@ const { themeConfig } = storeToRefs(globalStore)
 // const isCollapse = ref(false) // 展开的
 
 const active = ref('')
+// 监听窗口大小变化，折叠侧边栏
+const screenWidth = ref(0)
+const minW = ref(1000)
 
 const router = useRouter()
 const isCollapse = computed(() => themeConfig.value.isCollapse)
 
+// 监听路由的变化（防止浏览器后退/前进不变化 tabsMenuValue）
+watch(
+  () => router.currentRoute.value,
+  () => {
+    active.value = router.currentRoute.value.path || '/'
+  },
+  {
+    immediate: true
+  }
+)
+
 onMounted(() => {
   active.value = router.currentRoute.value.path || '/'
   setMenuFunc(active.value)
+  listeningWindow()
+  window.addEventListener('resize', listeningWindow, false)
 })
 
 const handleSelect = (key: string) => {
@@ -53,6 +69,21 @@ function setMenuFunc(key: string) {
   const item = routes.find((item) => item.path === key) as Record<string, unknown>
   useTabs.setMenuList(item)
 }
+
+function listeningWindow() {
+  const timer = setTimeout(() => {
+    screenWidth.value = document.body.clientWidth
+    if (!isCollapse.value && screenWidth.value < minW.value)
+      globalStore.handleToggle({ isCollapse: true })
+    if (isCollapse.value && screenWidth.value > minW.value)
+      globalStore.handleToggle({ isCollapse: false })
+    clearTimeout(timer)
+  }, 100)
+}
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', listeningWindow)
+})
 </script>
 
 <style lang="less" scoped>

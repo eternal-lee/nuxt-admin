@@ -1,7 +1,7 @@
 export const routes = [
   {
     path: '/',
-    name: '主页',
+    name: '首页',
     en: 'homepage',
     icon: 'HomeFilled'
   },
