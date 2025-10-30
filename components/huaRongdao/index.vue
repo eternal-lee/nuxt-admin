@@ -168,15 +168,50 @@ function onSwitch(item: number, index: number) {
   }
 
   .resetBtn {
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     min-width: 60px;
     padding: 5px 8px;
     font-size: 14px;
-    border: 1px solid;
     border-radius: 4px;
     cursor: pointer;
+    overflow: hidden;
+    background: #000;
+
+    &::before {
+      content: ' ';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: -2;
+      width: 200%;
+      height: 200%;
+      background: #f00;
+      transform-origin: left top;
+      animation: roration 3s linear infinite;
+    }
+
+    &::after {
+      content: ' ';
+      position: absolute;
+      --w: 2px;
+      width: calc(100% - var(--w) * 2);
+      height: calc(100% - var(--w) * 2);
+      left: var(--w);
+      top: var(--w);
+      background: inherit;
+      border-radius: inherit;
+      z-index: -1;
+    }
+  }
+}
+
+@keyframes roration {
+  to {
+    transform: rotate(1turn);
   }
 }
 </style>
