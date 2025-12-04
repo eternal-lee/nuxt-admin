@@ -80,7 +80,7 @@ export default defineNuxtConfig({
   ],
   seo: {
     title: 'ieternal后台管理系统',
-    description: 'nieternal后台管理系统，是以nuxt-admin、nuxt3-admin为基础开发的一款后台管理系统.',
+    description: 'ieternal后台管理系统，是以nuxt-admin、nuxt3-admin为基础开发的一款后台管理系统.',
     keywords: 'ieternal,nuxt,nuxt3,nuxt-admin,nuxt3-admin,后台管理系统,ieternal后台管理系统.'
   },
   sitemap: {}
