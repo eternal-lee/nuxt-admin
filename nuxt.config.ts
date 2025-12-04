@@ -19,8 +19,9 @@ export default defineNuxtConfig({
           content: 'width=device-width, initial-scale=1.0'
         },
         {
-          name: 'keywords',
-          content: 'ieternal,nuxt,nuxt3,nuxt-admin,nuxt3-admin,后台管理系统,ieternal后台管理系统.'
+          name: 'Keywords',
+          content:
+            'ieternal，nuxt，nuxt3，nuxt-admin，nuxt3-admin，后台管理系统，ieternal后台管理系统'
         }
       ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
@@ -81,7 +82,7 @@ export default defineNuxtConfig({
   seo: {
     title: 'ieternal后台管理系统',
     description: 'ieternal后台管理系统，是以nuxt-admin、nuxt3-admin为基础开发的一款后台管理系统.',
-    keywords: 'ieternal,nuxt,nuxt3,nuxt-admin,nuxt3-admin,后台管理系统,ieternal后台管理系统.'
+    keywords: 'ieternal，nuxt，nuxt3，nuxt-admin，nuxt3-admin，后台管理系统，ieternal后台管理系统'
   },
   sitemap: {}
 })
