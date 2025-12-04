@@ -1,7 +1,12 @@
 <template>
   <div class="aside-box">
     <div class="logo">
-      <img src="~/assets/images/logo.png" class="icon" alt="" />
+      <img
+        src="~/assets/images/logo_jpg.png"
+        class="icon"
+        :class="{ isCollapse: isCollapse }"
+        alt="ieternal后台管理系统-LOGO"
+      />
       <div class="desc" :class="{ w: isCollapse }">工作台</div>
     </div>
     <el-menu
@@ -95,10 +100,9 @@ onBeforeUnmount(() => {
     align-items: center;
     justify-content: flex-start;
     height: 60px;
-    padding-left: 15px;
 
     .icon {
-      width: 40px;
+      width: auto;
       height: 40px;
     }
 

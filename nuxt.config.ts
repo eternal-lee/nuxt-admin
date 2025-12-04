@@ -2,15 +2,17 @@
 export default defineNuxtConfig({
   app: {
     head: {
-      title: 'ieternal', // default fallback title
+      title: 'ieternal后台管理系统', // default fallback title
+      titleTemplate: '%s', // 或者 '%s | MySite'
       htmlAttrs: {
         lang: 'zh'
       },
       viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
       meta: [
+        { name: 'author', content: 'ieternal' },
         {
           name: 'description',
-          content: 'ieternal | nuxt3-admin 后台管理系统模板'
+          content: 'ieternal后台管理系统，是以nuxt-admin、nuxt3-admin为基础开发的一款后台管理系统.'
         },
         {
           name: 'viewport',
@@ -18,7 +20,7 @@ export default defineNuxtConfig({
         },
         {
           name: 'keywords',
-          content: 'ieternal,nuxt,nuxt3,nuxt-admin,nuxt3-admin,后台管理系统.'
+          content: 'ieternal,nuxt,nuxt3,nuxt-admin,nuxt3-admin,后台管理系统,ieternal后台管理系统.'
         }
       ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
@@ -77,9 +79,9 @@ export default defineNuxtConfig({
     'pinia-plugin-persistedstate/nuxt'
   ],
   seo: {
-    title: 'ieternal | nuxt-admin',
-    description: 'ieternal | nuxt3-admin 后台管理系统模板',
-    keywords: 'ieternal,nuxt,nuxt3,nuxt-admin,nuxt3-admin,后台管理系统.'
+    title: 'ieternal后台管理系统',
+    description: 'nieternal后台管理系统，是以nuxt-admin、nuxt3-admin为基础开发的一款后台管理系统.',
+    keywords: 'ieternal,nuxt,nuxt3,nuxt-admin,nuxt3-admin,后台管理系统,ieternal后台管理系统.'
   },
   sitemap: {}
 })

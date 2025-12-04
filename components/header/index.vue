@@ -18,7 +18,7 @@
         </el-breadcrumb>
       </div>
     </div>
-    <div class="center flexCenter">nuxt-admin</div>
+    <div class="center flexCenter"></div>
     <div class="right">
       <div class="header-icon">
         <div class="theme" @click="switchHandle">
