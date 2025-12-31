@@ -1,5 +1,5 @@
 // 全局验权操作，就无需每个路由里面添加
-const visitorArr = ['/visitor', '/callback']
+const visitorArr = ['/visitor', '/visitor/', '/callback', '/callback/']
 
 export default defineNuxtRouteMiddleware((to, _from) => {
   // 仅在客户端执行

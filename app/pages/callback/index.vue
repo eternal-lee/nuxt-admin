@@ -7,7 +7,7 @@ const route = useRoute()
 const router = useRouter()
 
 definePageMeta({
-  layout: 'fullpage'
+  layout: 'full-page'
 })
 
 onMounted(() => {
@@ -22,6 +22,7 @@ onMounted(() => {
   } else if (state == 'wx_auth') {
     console.log('公众号 授权 code:', code)
   }
+  if (!process.client) return
   localStorage.setItem('token', '11999')
   router.replace('/')
 })

@@ -14,7 +14,7 @@ import HuaRongdaoIndex from '~/components/huaRongdao/index.vue'
 import bgCanvas from '~/components/huaRongdao/bgCanvas.vue'
 
 definePageMeta({
-  layout: 'fullpage'
+  layout: 'full-page'
 })
 const router = useRouter()
 function goHome() {
