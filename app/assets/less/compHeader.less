@@ -1,0 +1,118 @@
+.header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  color: var(--el-menu-text-color);
+  user-select: none;
+
+  .left {
+    position: relative;
+    z-index: 1;
+    padding: 0 20px;
+
+    .collapse-icon {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .brendCrumb {
+      display: flex;
+      flex-direction: row;
+      margin-left: 20px;
+      font-size: 14px;
+
+      .breadcrumb_item {
+        display: flex;
+        align-items: center;
+
+        .breadcrumb_inner {
+          color: var(--el-text-color-regular);
+          cursor: text;
+
+          .svg_icon {
+            margin-right: 2px;
+          }
+
+          &.is-link {
+            color: var(--el-menu-text-color);
+
+            &:hover {
+              color: var(--el-menu-active-color);
+              cursor: pointer;
+            }
+          }
+        }
+
+        .separator {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 14px;
+          margin: 0 6px;
+          color: var(--el-text-color-placeholder);
+        }
+      }
+    }
+  }
+
+  .right {
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    min-width: 100px;
+    padding-right: 20px;
+    margin-left: auto;
+
+    .theme-icon {
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .userInfo {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      height: 100%;
+      margin-left: 20px;
+
+      .username {
+        margin: 0 20px;
+      }
+
+      .portrait {
+        position: relative;
+
+        /* 可选：防止收缩 */
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        background: #dedede;
+        border-radius: 50%;
+
+        .loginOut {
+          position: absolute;
+          left: -16px;
+          display: none;
+          height: 100%;
+          padding: 0 20px;
+          line-height: 40px;
+          white-space: nowrap;
+          cursor: pointer;
+          background: rgba(0, 0, 0, 50%);
+
+          &:hover {
+            color: var(--el-menu-active-color);
+          }
+        }
+
+        &:hover .loginOut {
+          display: block;
+        }
+      }
+    }
+  }
+}

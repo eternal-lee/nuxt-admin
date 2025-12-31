@@ -1,0 +1,16 @@
+<template>
+  <i class="svg_icon">
+    <svg data-v-88ee4ebc="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+      <path
+        fill="currentColor"
+        d="M128 192h768v128H128zm0 256h512v128H128zm0 256h768v128H128zm576-352 192 160-192 128z"
+      ></path>
+    </svg>
+  </i>
+</template>
+
+<script setup lang="ts">
+defineOptions({
+  name: 'Expand'
+})
+</script>

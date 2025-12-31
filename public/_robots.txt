@@ -2,6 +2,6 @@
 User-agent: *
 Disallow: 
 
-Sitemap: https://www.ieternal.top/sitemap.xml
-Sitemap: http://www.ieternal.top/sitemap.xml
+Sitemap: https://www.ieternal.top/frontend/nuxt/sitemap.xml
+Sitemap: http://www.ieternal.top/frontend/nuxt/sitemap.xml
 # END nuxt-robots
