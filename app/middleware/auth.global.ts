@@ -6,10 +6,11 @@ export default defineNuxtRouteMiddleware((to, _from) => {
   if (process.client) {
     if (visitorArr.includes(to.path)) return
     const token = localStorage.getItem('token')
-    if (!token && to.path !== '/login') {
+    const _login = ['/login', '/login/'].includes(to.path)
+    if (!token && !_login) {
       return navigateTo('/login')
     }
-    if (token && to.path == '/login') {
+    if (token && _login) {
       return navigateTo('/')
     }
   }
