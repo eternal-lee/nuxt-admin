@@ -42,7 +42,9 @@
           ></path>
         </svg>
       </button>
-      <a href="http://docs.ieternal.top/gateway/api/ThirdAuth/github">
+      <a
+        :href="`http://docs.ieternal.top/gateway/api/ThirdAuth/github?redirect_url=${redirect_url}`"
+      >
         <!-- @click="authHandle('github')" -->
         <button aria-label="Log in with GitHub" class="icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5 fill-current">
@@ -52,7 +54,7 @@
           </svg>
         </button>
       </a>
-      <a href="http://docs.ieternal.top/gateway/api/ThirdAuth/qq">
+      <a :href="`http://docs.ieternal.top/gateway/api/ThirdAuth/qq?redirect_url=${redirect_url}`">
         <button aria-label="Log in with QQ" class="icon">
           <!-- <img src="~/assets/images/qq_login.png" class="qq_icon" alt="QQ登录" title="QQ登录" /> -->
           <img
@@ -74,7 +76,13 @@
 <script lang="ts" setup>
 const userName = ref('admin')
 const userPwd = ref('123456')
+const redirect_url = ref('')
 const router = useRouter()
+
+onMounted(() => {
+  if (!location.origin.includes('localhost'))
+    redirect_url.value = location.origin + '/frontend/nuxt/callback'
+})
 
 function signIn() {
   const _isBol = userName.value == 'admin' && userPwd.value == '123456'
