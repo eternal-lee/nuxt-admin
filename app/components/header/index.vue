@@ -30,15 +30,16 @@
 </template>
 
 <script setup lang="ts">
-import HomeFilled from '~/components/svg/HomeFilled.vue'
-import Fold from '~/components/svg/Fold.vue'
-import Expand from '~/components/svg/Expand.vue'
-import Moon from '~/components/svg/Moon.vue'
-import Sunny from '~/components/svg/Sunny.vue'
 import { useGlobalStore } from '~/store/index'
 import { useTabsStore } from '~/store/modules/tabs'
 import { useThemeHook } from '~/composables/useTheme'
 import { routes } from '~/router/index'
+
+const HomeFilled = defineAsyncComponent(() => import('~/components/svg/HomeFilled.vue'))
+const Fold = defineAsyncComponent(() => import('~/components/svg/Fold.vue'))
+const Expand = defineAsyncComponent(() => import('~/components/svg/Expand.vue'))
+const Moon = defineAsyncComponent(() => import('~/components/svg/Moon.vue'))
+const Sunny = defineAsyncComponent(() => import('~/components/svg/Sunny.vue'))
 
 const useGlobal = useGlobalStore()
 const useTabs = useTabsStore()

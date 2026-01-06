@@ -10,8 +10,8 @@
 </template>
 
 <script setup lang="ts">
-import Login from '~/components/login/index.vue'
-import bgCanvas from '~/components/huaRongdao/bgCanvas.vue'
+const Login = defineAsyncComponent(() => import('~/components/login/index.vue'))
+const bgCanvas = defineAsyncComponent(() => import('~/components/huaRongdao/bgCanvas.vue'))
 
 definePageMeta({
   layout: 'full-page'

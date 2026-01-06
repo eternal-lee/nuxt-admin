@@ -22,10 +22,10 @@
 </template>
 
 <script setup lang="ts">
-import pageHeader from '~/components/header/index.vue'
-import pageFooter from '~/components/footer/index.vue'
-import cusMenu from '~/components/cusMenu/index.vue'
-import tabsBox from '~/components/tabsBox/index.vue'
+const pageHeader = defineAsyncComponent(() => import('~/components/header/index.vue'))
+const pageFooter = defineAsyncComponent(() => import('~/components/footer/index.vue'))
+const cusMenu = defineAsyncComponent(() => import('~/components/cusMenu/index.vue'))
+const tabsBox = defineAsyncComponent(() => import('~/components/tabsBox/index.vue'))
 </script>
 
 <style lang="less" scoped>

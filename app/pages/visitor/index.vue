@@ -10,8 +10,8 @@
 </template>
 
 <script setup lang="ts">
-import HuaRongdaoIndex from '~/components/huaRongdao/index.vue'
-import bgCanvas from '~/components/huaRongdao/bgCanvas.vue'
+const HuaRongdaoIndex = defineAsyncComponent(() => import('~/components/huaRongdao/index.vue'))
+const bgCanvas = defineAsyncComponent(() => import('~/components/huaRongdao/bgCanvas.vue'))
 
 definePageMeta({
   layout: 'full-page'
