@@ -22,6 +22,9 @@
           :class="{ 'is-active': active == item.path }"
           @click.stop="handleSelect(item.path)"
         >
+          <i class="el-icon">
+            <component :is="item.icon"></component>
+          </i>
           <span>{{ item.name }}</span>
         </div>
       </template>
@@ -45,13 +48,14 @@ const screenWidth = ref(0)
 const minW = ref(1000)
 
 const router = useRouter()
+const route = router.currentRoute.value
 const isCollapse = computed(() => themeConfig.value.isCollapse)
 
 // 监听路由的变化（防止浏览器后退/前进不变化 tabsMenuValue）
 watch(
   () => router.currentRoute.value,
-  () => {
-    active.value = router.currentRoute.value.path || '/'
+  (val) => {
+    active.value = String(val.path).replace(/\/$/, '') || '/'
   },
   {
     immediate: true
@@ -59,7 +63,7 @@ watch(
 )
 
 onMounted(() => {
-  active.value = router.currentRoute.value.path || '/'
+  active.value = String(route.path).replace(/\/$/, '') || '/'
   setMenuFunc(active.value)
   // listeningWindow()
   window.addEventListener('resize', listeningWindow, false)
@@ -138,7 +142,7 @@ onBeforeUnmount(() => {
   .el-menu {
     border-right: none;
     background-color: var(--el-menu-bg-color);
-    border-right: 1px solid var(--el-menu-border-color) #dcdfe6;
+    // border-right: 1px solid var(--el-menu-border-color);
     box-sizing: border-box;
     list-style: none;
     margin: 0;
@@ -160,6 +164,17 @@ onBeforeUnmount(() => {
       position: relative;
       transition: border-color 0.3s background-color 0.3s, color 0.3s;
 
+      [class^='el-icon'] {
+        vertical-align: middle;
+        width: 20px;
+        font-size: 18px;
+      }
+
+      span {
+        transition: all 0.3s;
+        margin-left: 5px;
+      }
+
       &:hover {
         background-color: var(--el-menu-hover-bg-color);
       }
@@ -173,6 +188,14 @@ onBeforeUnmount(() => {
   .el-menu-vertical-demo {
     &:not(.el-menu--collapse) {
       width: 210px;
+    }
+
+    &.el-menu--collapse {
+      .el-menu-item {
+        span {
+          display: none;
+        }
+      }
     }
   }
 }

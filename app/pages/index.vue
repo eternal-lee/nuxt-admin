@@ -1,6 +1,6 @@
 <template>
   <div class="home card">
-    <img src="~/assets/images/welcome.png" class="welcome" />
+    <img src="~/assets/images/welcome.png" class="welcome" alt="ieternal后台管理系统 LOGO" />
   </div>
 </template>
 

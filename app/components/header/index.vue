@@ -2,22 +2,31 @@
   <header class="header">
     <div class="left flexCenter">
       <div class="collapse-icon" @click.stop="handleToggle">
-        <Fold v-if="!isCollapse" />
-        <Expand v-else />
+        <i class="el-icon">
+          <Fold v-if="!isCollapse" />
+          <Expand v-else />
+        </i>
       </div>
       <div class="brendCrumb" v-if="!!breadcrumbList.length">
         <div class="breadcrumb_item" v-for="(item, index) in breadcrumbList" :key="item.path">
-          <div class="breadcrumb_inner" :class="{ 'is-link': index != breadcrumbList.length - 1 }">
-            <HomeFilled v-if="item.icon == 'HomeFilled'"></HomeFilled> {{ item.name }}
+          <div
+            class="breadcrumb_inner"
+            :class="{ 'is-link': index != breadcrumbList.length - 1 }"
+            @click.stop="handleSelect(item.path, index)"
+          >
+            <i class="el-icon"><component :is="item.icon" /></i>
+            {{ item.name }}
           </div>
-          <span v-if="index != breadcrumbList.length - 1" class="separator">></span>
+          <i v-if="index != breadcrumbList.length - 1" class="el-icon separator"><ArrowRight /></i>
         </div>
       </div>
     </div>
     <div class="right">
       <div class="theme-icon" @click="switchHandle">
-        <Moon v-if="themeConfig.isDark" />
-        <Sunny v-if="!themeConfig.isDark" />
+        <i class="el-icon">
+          <Moon v-if="themeConfig.isDark" />
+          <Sunny v-if="!themeConfig.isDark" />
+        </i>
       </div>
       <div class="userInfo">
         <div class="username">admin</div>
@@ -35,12 +44,6 @@ import { useTabsStore } from '~/store/modules/tabs'
 import { useThemeHook } from '~/composables/useTheme'
 import { routes } from '~/router/index'
 
-const HomeFilled = defineAsyncComponent(() => import('~/components/svg/HomeFilled.vue'))
-const Fold = defineAsyncComponent(() => import('~/components/svg/Fold.vue'))
-const Expand = defineAsyncComponent(() => import('~/components/svg/Expand.vue'))
-const Moon = defineAsyncComponent(() => import('~/components/svg/Moon.vue'))
-const Sunny = defineAsyncComponent(() => import('~/components/svg/Sunny.vue'))
-
 const useGlobal = useGlobalStore()
 const useTabs = useTabsStore()
 const { themeConfig } = storeToRefs(useGlobal)
@@ -55,6 +58,18 @@ const breadcrumbList = computed(() => {
   const _curTab = useTabs.tabsMenuList.filter((item) => item.path == _fullpath)
   return [..._item, ..._curTab]
 })
+
+const handleSelect = (key: string, index: number) => {
+  const _len = breadcrumbList.value.length
+  if (_len == 1 || (_len > 1 && index > 0)) return
+  setMenuFunc(key)
+  router.replace(key)
+}
+
+function setMenuFunc(key: string) {
+  const item = routes.find((item) => item.path === key) as Record<string, unknown>
+  useTabs.setMenuList(item)
+}
 
 function handleToggle() {
   useGlobal.handleToggle({ isCollapse: !isCollapse.value })
