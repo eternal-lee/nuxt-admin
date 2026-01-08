@@ -1,4 +1,6 @@
 <template>
+  <!-- 首屏加载动画 -->
+  <FullLoading v-if="isFullLoading" />
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
@@ -8,11 +10,36 @@
 import { useThemeHook } from '~/composables/useTheme'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
+// 是否首次加載
+const isFullLoading = ref(true)
 const { initTheme } = useThemeHook()
 const nuxtApp = useNuxtApp()
 
-initTheme()
-for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-  nuxtApp.vueApp.component(key, component)
+onMounted(() => {
+  initFunc()
+})
+
+/**
+ * 数据初始化
+ */
+function initFunc() {
+  pageLoadingFunc()
+  initTheme()
+  for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+    nuxtApp.vueApp.component(key, component)
+  }
+}
+
+/**
+ * 页面加载动画
+ */
+function pageLoadingFunc() {
+  nuxtApp.hook('page:start', () => {
+    isFullLoading.value = true
+  })
+
+  nuxtApp.hook('page:finish', () => {
+    isFullLoading.value = false
+  })
 }
 </script>
