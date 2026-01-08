@@ -44,7 +44,11 @@ const tabsBox = defineAsyncComponent(() => import('~/components/tabsBox/index.vu
 
     &.is-vertical {
       flex-direction: column;
-      min-width: 800px;
+      min-width: var(--page-min-width);
+
+      @media screen and (max-width: 600px) {
+        min-width: 300px;
+      }
     }
   }
 

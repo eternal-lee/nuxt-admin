@@ -37,6 +37,7 @@ import { routes } from '~/router/index'
 import { useTabsStore } from '~/store/modules/tabs'
 import { useGlobalStore } from '~/store'
 
+const emits = defineEmits(['handleSelect'])
 const useTabs = useTabsStore()
 const globalStore = useGlobalStore()
 const { themeConfig } = storeToRefs(globalStore)
@@ -72,6 +73,7 @@ onMounted(() => {
 const handleSelect = (key: string) => {
   setMenuFunc(key)
   router.replace(key)
+  emits('handleSelect')
 }
 
 function setMenuFunc(key: string) {

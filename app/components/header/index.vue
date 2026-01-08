@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <div class="left flexCenter">
+    <div class="left big-screen flexCenter">
       <div class="collapse-icon" @click.stop="handleToggle">
         <i class="el-icon">
           <Fold v-if="!isCollapse" />
@@ -21,6 +21,19 @@
         </div>
       </div>
     </div>
+    <div class="left small-screen flexCenter" @click.stop="navHandle(true)">
+      <i class="el-icon">
+        <Expand />
+      </i>
+    </div>
+
+    <!-- 移动端导航栏 -->
+    <nav id="main-nav" class="nav" :class="{ show: showNav }">
+      <div class="nav-mask" @click.stop="navHandle(false)"></div>
+      <div class="menuBox" @click.stop="navHandle(false)">
+        <cusMenu @handleSelect="navHandle(false)" />
+      </div>
+    </nav>
     <div class="right">
       <div class="theme-icon" @click="switchHandle">
         <i class="el-icon">
@@ -49,6 +62,8 @@ const useTabs = useTabsStore()
 const { themeConfig } = storeToRefs(useGlobal)
 const useTheme = useThemeHook()
 
+const showNav = ref(false) // 移动端导航
+
 const router = useRouter()
 const isCollapse = computed(() => themeConfig.value.isCollapse)
 const breadcrumbList = computed(() => {
@@ -73,6 +88,10 @@ function setMenuFunc(key: string) {
 
 function handleToggle() {
   useGlobal.handleToggle({ isCollapse: !isCollapse.value })
+}
+
+function navHandle(bol: boolean = false) {
+  showNav.value = bol
 }
 
 function switchHandle() {
