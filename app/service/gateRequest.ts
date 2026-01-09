@@ -7,7 +7,7 @@ export interface httpResponse<T = any> {
   [key: string]: any
 }
 
-const axiosBaseURL = 'http://docs.ieternal.top/gateway/api'
+const axiosBaseURL = (window?.location?.protocol || 'http:') + '//docs.ieternal.top/gateway/api'
 
 const axInstance = axios.create({
   baseURL: axiosBaseURL,
@@ -83,11 +83,13 @@ axInstance.interceptors.response.use(
       }
       // 返回接口返回的错误信息
       return Promise.resolve({
-        statusText: error.response?.statusText || '出错了',
-        code: -200,
-        data: null,
-        msg: error.response?.data?.message,
-        success: error.response.data.success || false
+        data: {
+          statusText: error.response?.statusText || '出错了',
+          code: -200,
+          data: null,
+          msg: error.response?.data?.message,
+          success: error.response.data.success || false
+        }
       })
     }
 
@@ -101,11 +103,13 @@ axInstance.interceptors.response.use(
 
       // 返回接口返回的错误信息
       return Promise.resolve({
-        statusText: error.response?.statusText || '出错了',
-        code: -200,
-        data: null,
-        msg: msg,
-        success: error.response?.data?.success || false
+        data: {
+          statusText: error.response?.statusText || '出错了',
+          code: -200,
+          data: null,
+          msg: msg,
+          success: error.response?.data?.success || false
+        }
       })
     }
   }
