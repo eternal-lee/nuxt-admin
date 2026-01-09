@@ -13,7 +13,7 @@ const baseURL = axiosBaseURL
  * @param  {[object]} par    [请求数据]
  */
 export default {
-  get(url: string, data: Record<string, unknown>): Promise<httpResponse> {
+  get(url: string, data?: Record<string, unknown>): Promise<httpResponse> {
     let pathUrl = baseURL + url
     return new Promise((resolve, reject) => {
       axInstance({
@@ -29,7 +29,7 @@ export default {
         })
     })
   },
-  post(url: string, data: Record<string, unknown>): Promise<httpResponse> {
+  post(url: string, data?: Record<string, unknown>): Promise<httpResponse> {
     let pathUrl = baseURL + url
     return new Promise((resolve, reject) => {
       axInstance({

@@ -23,9 +23,9 @@ export function _initWX(opt: IShareConfig) {
   const _pathname = `${encodeURIComponent(window?.location.pathname || '/frontend/nuxt/')}`
   const _addressUrl = (window?.location.origin || '') + _pathname
 
-  const url = '/wxAuth/config'
+  const url = '/wxAuth/config?redirect_url=' + _addressUrl
 
-  return axiosHttp.get(url, { redirect_url: _addressUrl }).then((res) => {
+  return axiosHttp.get(url).then((res) => {
     if (!device.isWeixinBrowser()) return
     if (res.code == 200 && res.data) {
       const _ret = res.data
