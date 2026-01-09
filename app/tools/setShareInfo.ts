@@ -1,5 +1,5 @@
-import axios from 'axios'
 import wx from 'weixin-js-sdk-ts'
+import axiosHttp from '~/service/axiosHttp'
 import device from '~/utils'
 
 interface IShareConfig {
@@ -23,13 +23,12 @@ export function _initWX(opt: IShareConfig) {
   const _pathname = `${encodeURIComponent(window?.location.pathname || '/frontend/nuxt/')}`
   const _addressUrl = (window?.location.origin || '') + _pathname
 
-  const url = 'http://docs.ieternal.top/gateway/api/wxAuth/config?redirect_url=' + _addressUrl
+  const url = '/wxAuth/config'
 
-  return axios.get(url).then((res) => {
+  return axiosHttp.get(url, { redirect_url: _addressUrl }).then((res) => {
     if (!device.isWeixinBrowser()) return
-    const ret = res.data || { code: -200 }
-    if (ret.code == 200 && ret.data) {
-      const _ret = ret.data
+    if (res.code == 200 && res.data) {
+      const _ret = res.data
       let jsApiList: wx.jsApiList = [
         'showAllNonBaseMenuItem',
         'hideAllNonBaseMenuItem',

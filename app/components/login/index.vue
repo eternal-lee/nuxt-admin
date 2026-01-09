@@ -75,6 +75,7 @@ import Twitter from '~/components/svg/Twitter.vue'
 import GitHub from '~/components/svg/GitHub.vue'
 import WeiXin from '~/components/svg/WeiXin.vue'
 import device from '~/utils/index'
+import axiosHttp from '~/service/axiosHttp'
 
 const userName = ref('admin')
 const userPwd = ref('123456')
@@ -91,6 +92,17 @@ function signIn() {
   if (!_isBol) return console.log('用户名或密码不正确')
   console.log('登录成功')
   localStorage.setItem('token', '11999')
+  const param = {
+    username: 'admin',
+    password: '123456'
+  }
+  axiosHttp.post('/auth/login', param).then((res) => {
+    console.warn(res, 55555)
+    if (res.code == 200) {
+      const _ret = res.data.access_token || ''
+      localStorage.setItem('token', _ret)
+    }
+  })
   // 将 token 写入 cookie，以便在服务端中间件也能读取
   // const token = useCookie('token')
   // if (token) token.value = '11999'
